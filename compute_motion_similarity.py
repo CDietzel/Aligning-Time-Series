@@ -215,7 +215,7 @@ avg_results = pd.DataFrame(
 
 loss_output.mkdir(parents=True, exist_ok=True)
 
-full_results.to_csv(loss_output / "full_results.csv", index=False)
+full_results.to_csv(loss_output / "gdtw_full_results.csv", index=False)
 avg_results.to_csv(loss_output / "avg_results.csv", index=False)
 
 avg_results[["CTW Scores", "GDTW Scores", "Soft GDTW Scores"]] = avg_results.groupby(
