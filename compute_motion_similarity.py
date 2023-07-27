@@ -119,8 +119,10 @@ num_hyperparameters = [18, 18]
 sum_hyperparameters = sum(num_hyperparameters)
 total_hyperparameters = num_seeds * sum_hyperparameters
 
-Gdtw = gromov_dtw(max_iter=10, loss_only=1, dtw_approach="GDTW", verbose=0)
-Soft_Gdtw = gromov_dtw(max_iter=10, loss_only=1, dtw_approach="soft_GDTW", verbose=0)
+Gdtw = gromov_dtw(max_iter=10, gamma=0.1, loss_only=1, dtw_approach="GDTW", verbose=0)
+Soft_Gdtw = gromov_dtw(
+    max_iter=10, gamma=0.1, loss_only=1, dtw_approach="soft_GDTW", verbose=0
+)
 
 full_ctw_scores = []
 full_soft_gdtw_scores = []
@@ -164,6 +166,13 @@ for name in motion_name_list:
     gdtw_loss = Gdtw(robot_data, human_data).item()
     soft_gdtw_loss = Soft_Gdtw(robot_data, human_data).item()
 
+    #
+    #
+    #
+    #
+    #
+    #
+
     full_ctw_scores.append(ctw_loss)
     full_gdtw_scores.append(gdtw_loss)
     full_soft_gdtw_scores.append(soft_gdtw_loss)
@@ -171,7 +180,7 @@ for name in motion_name_list:
     full_tags.append(tag)
     full_names.append(name)
 
-    print("score for num " + str(i) + "/" +name + " is: " + str(gdtw_loss))
+    print("score for num " + str(i) + "/" + name + " is: " + str(gdtw_loss))
 
 
 for i, tag in enumerate(
@@ -215,6 +224,13 @@ for i, tag in enumerate(
         gdtw_loss = Gdtw(robot_data, human_data).item()
         soft_gdtw_loss = Soft_Gdtw(robot_data, human_data).item()
 
+        #
+        #
+        #
+        #
+        #
+        #
+
         full_ctw_scores.append(ctw_loss)
         full_gdtw_scores.append(gdtw_loss)
         full_soft_gdtw_scores.append(soft_gdtw_loss)
@@ -222,7 +238,7 @@ for i, tag in enumerate(
         full_tags.append(tag)
         full_names.append(name)
 
-        print("score for num " + str(i) + "/" +name + " is: " + str(gdtw_loss))
+        print("score for num " + str(i) + "/" + name + " is: " + str(gdtw_loss))
 
         # temp_ctw_scores.append(ctw_loss)
         # temp_gdtw_scores.append(gdtw_loss)
